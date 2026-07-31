@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIY Force Feedback Steering Wheel</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --accent-color: #38bdf8;
+            --accent-hover: #0284c7;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --border-color: #334155;
+            --code-bg: #090d16;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 0;
+        }
+
+        header {
+            border-bottom: 1px solid var(--border-color);
+            padding: 4rem 2rem 3rem 2rem;
+            text-align: center;
+            background: radial-gradient(circle at top, #1e293b 0%, #0f172a 100%);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            margin-bottom: 0.75rem;
+        }
+
+        header p {
+            color: var(--text-secondary);
+            font-size: 1.125rem;
+            max-width: 700px;
+            margin: 0 auto 1.5rem auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.25rem;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background-color 0.2s ease;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: #0f172a;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .btn-secondary {
+            background-color: var(--card-bg);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--border-color);
+        }
+
+        container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+            display: block;
+        }
+
+        section {
+            margin-bottom: 3.5rem;
+        }
+
+        h2 {
+            font-size: 1.75rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            margin: 1.5rem 0 0.75rem 0;
+            color: var(--accent-color);
+        }
+
+        p, li {
+            color: var(--text-secondary);
+            margin-bottom: 0.75rem;
+        }
+
+        ul, ol {
+            padding-left: 1.5rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.25rem;
+            margin-top: 1rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.25rem;
+        }
+
+        .card h4 {
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        th, td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.95rem;
+        }
+
+        th {
+            background-color: rgba(255, 255, 255, 0.03);
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        td {
+            color: var(--text-secondary);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .media-placeholder {
+            width: 100%;
+            height: 300px;
+            background-color: var(--card-bg);
+            border: 2px dashed var(--border-color);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            margin: 1rem 0;
+        }
+
+        code {
+            background-color: var(--code-bg);
+            color: var(--accent-color);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.9em;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>DIY Force Feedback Steering Wheel</h1>
+        <p>A custom 24V belt-driven sim racing wheel base powered by Arduino Pro Micro, BTS7960 driver, and RS-775 motor.</p>
+        <div class="cta-buttons">
+            <a href="https://github.com/YOUR_USERNAME/YOUR_REPO/releases" class="btn btn-primary">Download CAD Package (.ZIP)</a>
+            <a href="https://github.com/YOUR_USERNAME/YOUR_REPO" class="btn btn-secondary">View GitHub Source</a>
+        </div>
+    </header>
+
+    <container>
+        <section id="overview">
+            <h2>Project Overview</h2>
+            <div class="media-placeholder">
+                [ Insert Project Demo GIF or Hero Image ]
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h4>Brain</h4>
+                    <p>Arduino Pro Micro (ATmega32U4) utilizing native USB controller stack.</p>
+                </div>
+                <div class="card">
+                    <h4>Motor Driver</h4>
+                    <p>BTS7960 43A H-Bridge powered by a 24V SMPS supply.</p>
+                </div>
+                <div class="card">
+                    <h4>Encoder</h4>
+                    <p>600 PPR Optical Rotary Encoder using hardware interrupt channels.</p>
+                </div>
+                <div class="card">
+                    <h4>Drive System</h4>
+                    <p>1:4 Belt Reduction utilizing 20T and 80T HTD-3M pulleys.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="bom">
+            <h2>Bill of Materials</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Component</th>
+                        <th>Quantity</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Arduino Pro Micro</td>
+                        <td>1</td>
+                        <td>ATmega32U4 5V/16MHz variant required</td>
+                    </tr>
+                    <tr>
+                        <td>BTS7960 Motor Driver</td>
+                        <td>1</td>
+                        <td>43A H-Bridge module with heatsink</td>
+                    </tr>
+                    <tr>
+                        <td>RS-775 Motor</td>
+                        <td>1</td>
+                        <td>High-speed variant (12V–24V)</td>
+                    </tr>
+                    <tr>
+                        <td>24V SMPS Power Supply</td>
+                        <td>1</td>
+                        <td>Minimum 10A - 15A rating recommended</td>
+                    </tr>
+                    <tr>
+                        <td>600 PPR Rotary Encoder</td>
+                        <td>1</td>
+                        <td>Optical quadrature type</td>
+                    </tr>
+                    <tr>
+                        <td>10k Potentiometers</td>
+                        <td>2–3</td>
+                        <td>Pedal axis mapping (Gas, Brake, Clutch)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="cad">
+            <h2>CAD & 3D Printing Files</h2>
+            <p>All component housings, mounts, and pulleys were designed for direct printing without complex support structures.</p>
+            <div class="grid">
+                <div class="card">
+                    <h4>80T HTD-3M Pulley</h4>
+                    <p>Main drive pulley attached to steering shaft.</p>
+                    <a href="#" class="btn btn-secondary" style="margin-top:0.5rem;">View .STL File</a>
+                </div>
+                <div class="card">
+                    <h4>Motor Mount Plate</h4>
+                    <p>Adjustable bracket for 775 motor tensioning.</p>
+                    <a href="#" class="btn btn-secondary" style="margin-top:0.5rem;">View .STL File</a>
+                </div>
+            </div>
+            <h3>Recommended Print Settings</h3>
+            <ul>
+                <li><strong>Material:</strong> PLA+ or PETG</li>
+                <li><strong>Perimeters:</strong> 4 minimum</li>
+                <li><strong>Infill:</strong> 30% or higher (Gyroid pattern)</li>
+                <li><strong>Layer Height:</strong> 0.2mm</li>
+            </ul>
+        </section>
+
+        <section id="wiring">
+            <h2>Wiring & Pinout Mapping</h2>
+            <div class="media-placeholder">
+                [ Insert Wiring Diagram Image Here ]
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Module Pin</th>
+                        <th>Target Connection</th>
+                        <th>Function</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>BTS7960 RPWM / LPWM</td>
+                        <td>Digital Pins 10 & 9</td>
+                        <td>Hardware PWM Direction Signals</td>
+                    </tr>
+                    <tr>
+                        <td>BTS7960 R_EN / L_EN</td>
+                        <td>Digital Pin 8</td>
+                        <td>Logic Enable (5V output pin)</td>
+                    </tr>
+                    <tr>
+                        <td>Encoder Channel A / B</td>
+                        <td>Digital Pins 0 (RX) & 1 (TX)</td>
+                        <td>Hardware Interrupt Inputs</td>
+                    </tr>
+                    <tr>
+                        <td>Pedals (Gas / Brake)</td>
+                        <td>Analog Pins A0 & A1</td>
+                        <td>0–5V Potentiometer Wiper Inputs</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="guide">
+            <h2>Setup & Game Compatibility</h2>
+            <h3>1. Firmware Flashing</h3>
+            <p>Upload the diagnostic test scripts to verify motor direction and pedal voltage response prior to loading full Force Feedback firmware via EMC Configurator.</p>
+            
+            <h3>2. Forza Horizon 5 Integration</h3>
+            <p>Forza Horizon 5 rejects raw DIY hardware IDs. To run without crashes:</p>
+            <ol>
+                <li>Configure virtual axes using <code>vJoy</code> and <code>Forza EmuWheel</code>.</li>
+                <li>Hide the physical Arduino Pro Micro hardware ID using <code>Hush</code>.</li>
+                <li>Bind controls within the game's <em>Custom Wheel Profile</em> tab.</li>
+            </ol>
+        </section>
+    </container>
+
+    <footer>
+        <p>DIY Force Feedback Wheel Project. Open Source Hardware & Software.</p>
+    </footer>
+
+</body>
+</html>
