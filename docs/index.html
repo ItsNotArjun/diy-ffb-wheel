@@ -184,6 +184,16 @@
             margin: 1rem 0;
         }
 
+        .responsive-img {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            margin: 1rem 0;
+            display: block;
+        }
+
         code {
             background-color: var(--code-bg);
             color: var(--accent-color);
@@ -208,8 +218,8 @@
         <h1>DIY Force Feedback Steering Wheel</h1>
         <p>A custom 24V belt-driven sim racing wheel base powered by Arduino Pro Micro, BTS7960 driver, and RS-775 motor.</p>
         <div class="cta-buttons">
-            <a href="https://github.com/YOUR_USERNAME/YOUR_REPO/releases" class="btn btn-primary">Download CAD Package (.ZIP)</a>
-            <a href="https://github.com/YOUR_USERNAME/YOUR_REPO" class="btn btn-secondary">View GitHub Source</a>
+            <a href="https://github.com/ItsNotArjun/diy-ffb-wheel/tree/main/cad" class="btn btn-primary">Download CAD Package (.ZIP)</a>
+            <a href="https://github.com/ItsNotArjun/diy-ffb-wheel" class="btn btn-secondary">View GitHub Source</a>
         </div>
     </header>
 
@@ -230,11 +240,11 @@
                 </div>
                 <div class="card">
                     <h4>Encoder</h4>
-                    <p>600 PPR Optical Rotary Encoder using hardware interrupt channels.</p>
+                    <p>400 PPR Optical Rotary Encoder using hardware interrupt channels.</p>
                 </div>
                 <div class="card">
                     <h4>Drive System</h4>
-                    <p>1:4 Belt Reduction utilizing 20T and 80T HTD-3M pulleys.</p>
+                    <p>1:4 gear system optimised for high torque.</p>
                 </div>
             </div>
         </section>
@@ -271,7 +281,7 @@
                         <td>Minimum 10A - 15A rating recommended</td>
                     </tr>
                     <tr>
-                        <td>600 PPR Rotary Encoder</td>
+                        <td>400 PPR Rotary Encoder</td>
                         <td>1</td>
                         <td>Optical quadrature type</td>
                     </tr>
@@ -287,7 +297,7 @@
         <section id="cad">
             <h2>CAD & 3D Printing Files</h2>
             <p>All component housings, mounts, and pulleys were designed for direct printing without complex support structures.</p>
-            <div class="grid">
+            <!-- <div class="grid">
                 <div class="card">
                     <h4>80T HTD-3M Pulley</h4>
                     <p>Main drive pulley attached to steering shaft.</p>
@@ -298,21 +308,20 @@
                     <p>Adjustable bracket for 775 motor tensioning.</p>
                     <a href="#" class="btn btn-secondary" style="margin-top:0.5rem;">View .STL File</a>
                 </div>
-            </div>
+            </div> -->
             <h3>Recommended Print Settings</h3>
             <ul>
-                <li><strong>Material:</strong> PLA+ or PETG</li>
-                <li><strong>Perimeters:</strong> 4 minimum</li>
-                <li><strong>Infill:</strong> 30% or higher (Gyroid pattern)</li>
+                <li><strong>Material:</strong> PLA+ </li>
+                <!-- <li><strong>Perimeters:</strong> 4 minimum</li> -->
+                <li><strong>Infill:</strong> 5% - 25% depending on the part (Gyroid pattern)</li>
                 <li><strong>Layer Height:</strong> 0.2mm</li>
             </ul>
         </section>
 
         <section id="wiring">
             <h2>Wiring & Pinout Mapping</h2>
-            <div class="media-placeholder">
-                [ Insert Wiring Diagram Image Here ]
-            </div>
+            <img src="imgs/wiring_diagram.png" class="responsive-img"></img>
+            <h5>Note: These same connections can be followed if using a Arduino Micro instead.</h5>
             <table>
                 <thead>
                     <tr>
@@ -349,12 +358,12 @@
         <section id="guide">
             <h2>Setup & Game Compatibility</h2>
             <h3>1. Firmware Flashing</h3>
-            <p>Upload the diagnostic test scripts to verify motor direction and pedal voltage response prior to loading full Force Feedback firmware via EMC Configurator.</p>
+            <p>Use XLoader to flash the Arduino with EMCLite0932.hex. Use WheelTest to calibrate and test force feedback.</p>
             
             <h3>2. Forza Horizon 5 Integration</h3>
             <p>Forza Horizon 5 rejects raw DIY hardware IDs. To run without crashes:</p>
             <ol>
-                <li>Configure virtual axes using <code>vJoy</code> and <code>Forza EmuWheel</code>.</li>
+                <li>Configure virtual axes using <a href="https://sourceforge.net/projects/vjoystick/">vJoy</a> and <a href="https://forzatools.weebly.com/forza-emuwheel.html" >Forza EmuWheel</a>.</li>
                 <li>Hide the physical Arduino Pro Micro hardware ID using <code>Hush</code>.</li>
                 <li>Bind controls within the game's <em>Custom Wheel Profile</em> tab.</li>
             </ol>
